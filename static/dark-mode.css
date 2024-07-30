@@ -1,0 +1,41 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.container {
+    padding: 20px;
+}
+
+.table {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.table-bordered {
+    border: 1px solid #444;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #444;
+}
+
+.table thead th {
+    background-color: #222;
+}
+
+.table tbody td, .table thead th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #555;
+}
+
+.alert-info {
+    background-color: #1a1a1a;
+    color: #b3b3b3;
+}
+
+.alert-danger {
+    background-color: #2a1a1a;
+    color: #e0a1a1;
+}

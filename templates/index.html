@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Poblacion Travian-Legends</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dark-mode.css') }}" rel="stylesheet">
+    <style>
+        /* Agregar el estilo del boton de alternancia */
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-btn">
+        <button id="darkModeToggle" class="btn btn-dark">Modo Oscuro</button>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Cargue un archivo HTML/Bloc de notas</h1>
+        <form action="{{ url_for('index') }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="archivo" class="form-control-file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Cargar</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Funcion para alternar el modo oscuro
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            this.textContent = isDarkMode ? 'Modo Claro' : 'Modo Oscuro';
+
+            // Guardar el estado en el almacenamiento local
+            localStorage.setItem('dark-mode', isDarkMode);
+        });
+
+        // Aplicar el estado guardado en el almacenamiento local
+        document.addEventListener('DOMContentLoaded', function() {
+            const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeToggle').textContent = 'Modo Claro';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de Comparacion</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dark-mode.css') }}" rel="stylesheet">
+    <style>
+        /* Agregar el estilo del boton de alternancia */
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-btn">
+        <button id="darkModeToggle" class="btn btn-dark">Modo Oscuro</button>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Resultado de Comparacion</h1>
+        <a href="{{ url_for('index') }}" class="btn btn-link mb-4">Volver a cargar un archivo</a>
+
+        {% if jugadores %}
+        <h2>Datos Actuales</h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Población Actual</th>
+                    <th>Aldeas Actuales</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for jugador in jugadores %}
+                <tr>
+                    <td>{{ jugador['player'] }}</td>
+                    <td>{{ jugador['population'] }}</td>
+                    <td>{{ jugador['villages'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Diferencias con Anterior</h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Población Anterior</th>
+                    <th>Población Actual</th>
+                    <th>Diferencia Población</th>
+                    <th>Aldeas Anterior</th>
+                    <th>Aldeas Actual</th>
+                    <th>Diferencia Aldeas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for diff in diferencias %}
+                <tr>
+                    <td>{{ diff['player'] }}</td>
+                    <td>{{ diff['pop_prev'] }}</td>
+                    <td>{{ diff['pop_actual'] }}</td>
+                    <td>{{ diff['dif_poblacion'] }}</td>
+                    <td>{{ diff['vil_prev'] }}</td>
+                    <td>{{ diff['vil_actual'] }}</td>
+                    <td>{{ diff['dif_villages'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-info">No hay datos disponibles en este momento.</div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Funcion para alternar el modo oscuro
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            this.textContent = isDarkMode ? 'Modo Claro' : 'Modo Oscuro';
+
+            // Guardar el estado en el almacenamiento local
+            localStorage.setItem('dark-mode', isDarkMode);
+        });
+
+        // Aplicar el estado guardado en el almacenamiento local
+        document.addEventListener('DOMContentLoaded', function() {
+            const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('darkModeToggle').textContent = 'Modo Claro';
+            }
+        });
+    </script>
+</body>
+</html>
