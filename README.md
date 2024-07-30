@@ -63,7 +63,7 @@ Para ejecutar esta aplicación localmente, sigue estos pasos:
 - **Bootstrap:** Framework CSS para estilos.
 - **BeautifulSoup:** Biblioteca para extraer datos de archivos HTML.
 
-## Contribuciones
+## Contribuciones al Codigo / Proyecto
 
 Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 
@@ -71,6 +71,16 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 2. Crea una rama para tus cambios.
 3. Realiza tus modificaciones.
 4. Envía un pull request con una descripción clara de tus cambios.
+
+## Contribuciones y Apoyo
+
+Si encuentras útil este proyecto y deseas apoyarlo, puedes hacerlo de varias maneras:
+
+- **Donaciones:** Si te gustaría apoyar el desarrollo continuo y la mejora de este proyecto, puedes hacer una donación en [Buy Me a Coffee](https://buymeacoffee.com/felipecastillo). Tu contribución ayudará a cubrir los costos de desarrollo y mantener el proyecto actualizado.
+- **Comparte el Proyecto:** Ayuda a difundir el proyecto compartiéndolo con otros. Cuantos más usuarios lo conozcan, más útil será para la comunidad.
+- **Feedback:** Si tienes comentarios o sugerencias, no dudes en contactarme. Siempre estoy buscando maneras de mejorar el proyecto.
+
+Cada aporte es muy apreciado y contribuye directamente a la calidad y sostenibilidad del proyecto. ¡Gracias por tu apoyo!
 
 ## Licencia
 
